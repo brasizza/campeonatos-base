@@ -1,6 +1,6 @@
 import '../models/competition_model.dart';
-import 'competition_service_impl.dart';
+import '../models/country_model.dart';
 
 abstract class CompetitionService {
-  Future<List<Competition>?> getCompetitions();
+  Future<Map<Country, List<Competition>>?> getCompetitions();
 }

@@ -11,7 +11,7 @@ class ErrorWidgetCustom extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Icon(
+        const Icon(
           Icons.error_outlined,
           color: Colors.red,
           size: 80,

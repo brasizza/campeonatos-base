@@ -42,7 +42,7 @@ class ListTeams extends StatelessWidget {
                             RichText(
                               textAlign: TextAlign.start,
                               text: TextSpan(children: [
-                                const TextSpan(text: ' Total de pontos ', style: const TextStyle(color: Colors.black)),
+                                const TextSpan(text: ' Total de pontos ', style: TextStyle(color: Colors.black)),
                                 const TextSpan(text: '  '),
                                 TextSpan(text: _team.points.toString(), style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
                               ]),

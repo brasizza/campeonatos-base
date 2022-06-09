@@ -11,7 +11,7 @@ class NoDataWidgetCustom extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Icon(
+        const Icon(
           Icons.add_chart_sharp,
           color: Colors.green,
           size: 80,

@@ -3,9 +3,10 @@ import 'package:tabela_brasileirao_serie_a/app/core/widgets/error.dart';
 import 'package:tabela_brasileirao_serie_a/app/core/widgets/no_data.dart';
 import 'package:tabela_brasileirao_serie_a/app/data/models/competition_model.dart';
 import 'package:tabela_brasileirao_serie_a/app/modules/home/home_controller.dart';
-import 'package:tabela_brasileirao_serie_a/app/modules/home/widgets/list_competition.dart';
+import 'package:tabela_brasileirao_serie_a/app/modules/home/widgets/lists_contries.dart';
 
 import '../../core/widgets/loading.dart';
+import '../../data/models/country_model.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -29,7 +30,7 @@ class _HomePageState extends State<HomePage> {
         centerTitle: true,
         title: const Text('Competições pelo mundo!'),
       ),
-      body: FutureBuilder<List<Competition>?>(
+      body: FutureBuilder<Map<Country, List<Competition>>?>(
           future: controller.getCompetitions(),
           builder: (context, snapshot) {
             switch (snapshot.connectionState) {
@@ -44,7 +45,10 @@ class _HomePageState extends State<HomePage> {
                 if (!snapshot.hasData) {
                   return const NoDataWidgetCustom(text: 'Nenhuma competição encontrada');
                 }
-                return ListCompetition(snapshot.data!);
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ListCountries(snapshot.data),
+                );
             }
           }),
     );

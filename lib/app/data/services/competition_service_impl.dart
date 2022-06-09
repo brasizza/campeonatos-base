@@ -2,13 +2,14 @@ import 'dart:developer';
 
 import 'package:tabela_brasileirao_serie_a/app/data/models/competition_model.dart';
 import 'package:tabela_brasileirao_serie_a/app/data/repositories/competition_repository_impl.dart';
+import '../models/country_model.dart';
 import './competition_service.dart';
 
 class CompetitionServiceImpl implements CompetitionService {
   String baseUrl = "https://www.scorebat.com/api/competition/";
 
   @override
-  Future<List<Competition>?> getCompetitions() async {
+  Future<Map<Country, List<Competition>>?> getCompetitions() async {
     return await _repository!.getCompetitions(baseUrl);
   }
 

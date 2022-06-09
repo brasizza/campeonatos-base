@@ -22,7 +22,7 @@ class _LeaguesPageState extends State<LeaguesPage> {
     final Competition? competition = ModalRoute.of(context)?.settings.arguments as Competition;
     return Scaffold(
       appBar: AppBar(
-        title: (competition?.name == null) ? SizedBox() : Text(competition!.name),
+        title: (competition?.name == null) ? const SizedBox() : Text(competition!.name),
       ),
       body: FutureBuilder<List<Team>?>(
           future: controller.getScore(competition?.link),
