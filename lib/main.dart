@@ -11,25 +11,5 @@ void main() {
       '/leagues': (context) => const LeaguesPage(),
       '/competitions': (context) => const CompetitionPage(),
     },
-
-    // onGenerateRoute: (settings) {
-    //   // If you push the PassArguments route
-    //   if (settings.name == '/leagues') {
-    //     // Cast the arguments to the correct
-    //     // type: ScreenArguments.
-    //     final args = settings.arguments;
-
-    //     // Then, extract the required data from
-    //     // the arguments and pass the data to the
-    //     // correct screen.
-    //     return MaterialPageRoute(
-    //       builder: (context) {
-    //         return LeaguesPage(args: args);
-    //       },
-    //     );
-    //   }
-    //   assert(false, 'Need to implement ${settings.name}');
-    //   return null;
-    //  })
   ));
 }
