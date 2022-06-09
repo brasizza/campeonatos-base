@@ -6,15 +6,15 @@ import 'package:tabela_brasileirao_serie_a/app/data/services/competition_service
 import '../../data/services/competition_service_impl.dart';
 
 class HomeController {
-  late CompetitionServiceImpl competitionService;
+  late CompetitionServiceImpl _service;
 
   HomeController() {
     log('Start the HomeController instance');
 
-    competitionService = CompetitionServiceImpl.instance;
+    _service = CompetitionServiceImpl.instance;
   }
 
   Future<List<Competition>?> getCompetitions() async {
-    return await competitionService.getCompetitions();
+    return await _service.getCompetitions();
   }
 }
