@@ -22,9 +22,11 @@ class ListCompetition extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 5.0),
                   child: Text(
                     _competition.name,
+                    maxLines: 2,
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 10,
+                      overflow: TextOverflow.fade,
                     ),
                   ),
                 ),

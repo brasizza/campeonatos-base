@@ -20,6 +20,10 @@ class ChampionshipRepositoryImpl implements ChampionshipRepository {
       if (responseJson['response'].length == 0) {
         return null;
       }
+
+      if (responseJson['response']['hasStandings'] == 0) {
+        return null;
+      }
       final teams = responseJson['response']['standings']['rows'].map<Team>((competition) => Team.fromMap(competition)).toList();
       return teams;
     } catch (error) {

@@ -20,7 +20,15 @@ class CompetitionPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               (country.flag == null) ? const SizedBox.shrink() : Image.network(country.flag!),
-              Text(country.name),
+              Flexible(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 8.0),
+                  child: Text(
+                    country.name,
+                    overflow: TextOverflow.fade,
+                  ),
+                ),
+              ),
             ],
           ),
         ),
