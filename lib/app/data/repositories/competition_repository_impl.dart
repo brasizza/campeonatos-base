@@ -24,13 +24,14 @@ class CompetitionRepositoryImpl implements CompetitionRepository {
       }
       Map<Country, List<Competition>> competicoes = {};
       for (var competition in responseJson['response']) {
-        // if(_competitions)
-        final country = Country.fromMap(competition['country']);
-        if (!competicoes.containsKey(country)) {
-          // final _world = WorldCompetition(pais: country);
-          competicoes[country] = [];
+        if (competition['hasStandings'] >= 1) {
+          // if(_competitions)
+          final country = Country.fromMap(competition['country']);
+          if (!competicoes.containsKey(country)) {
+            competicoes[country] = [];
+          }
+          competicoes[country]?.add(Competition.fromMap(competition));
         }
-        competicoes[country]?.add(Competition.fromMap(competition));
       }
       return competicoes;
     } catch (error) {

@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:tabela_brasileirao_serie_a/app/data/models/championship_model.dart';
 import 'package:tabela_brasileirao_serie_a/app/data/models/team_model.dart';
 
 import './championship_repository.dart';
@@ -9,7 +10,7 @@ import 'package:http/http.dart' as http;
 
 class ChampionshipRepositoryImpl implements ChampionshipRepository {
   @override
-  Future<List<Team>?> getScore(String url) async {
+  Future<Championship?> getScore(String url) async {
     try {
       final response = await http.get(Uri.parse(url));
       if (response.statusCode != 200) {}
@@ -24,8 +25,10 @@ class ChampionshipRepositoryImpl implements ChampionshipRepository {
       if (responseJson['response']['hasStandings'] == 0) {
         return null;
       }
-      final teams = responseJson['response']['standings']['rows'].map<Team>((competition) => Team.fromMap(competition)).toList();
-      return teams;
+      // Championship? _championship;
+      // _championship=  Championship.fromResponse(responseJson['response']);
+      // final teams = responseJson['response']['standings']['rows'].map<Team>((competition) => Team.fromMap(competition)).toList();
+      return Championship.fromResponse(responseJson['response']);
     } catch (error) {
       return Future.error('Falha ao recuperar os dados');
     }

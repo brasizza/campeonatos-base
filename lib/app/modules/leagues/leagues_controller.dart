@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:tabela_brasileirao_serie_a/app/data/models/championship_model.dart';
 import 'package:tabela_brasileirao_serie_a/app/data/models/team_model.dart';
 import 'package:tabela_brasileirao_serie_a/app/data/services/championship_service_impl.dart';
 
@@ -11,7 +12,7 @@ class LeaguesController {
     _service = ChampionshipServiceImpl.instance;
   }
 
-  Future<List<Team>?> getScore(String? link) async {
+  Future<Championship?> getScore(String? link) async {
     return await _service.getScore(link);
   }
 }

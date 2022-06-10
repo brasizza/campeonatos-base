@@ -1,3 +1,4 @@
+import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:tabela_brasileirao_serie_a/app/data/models/team_model.dart';
 
@@ -29,12 +30,29 @@ class ListTeams extends StatelessWidget {
                       children: [
                         (logo == null)
                             ? Container()
-                            : Padding(
-                                padding: const EdgeInsets.only(left: 10.0),
-                                child: Image.network(urlLogos + logo, errorBuilder: ((context, error, stackTrace) {
-                                  return const SizedBox.shrink();
-                                })),
-                              ),
+                            : (index == 0)
+                                ? Badge(
+                                    shape: BadgeShape.circle,
+                                    position: BadgePosition.topStart(start: 2, top: -10),
+                                    badgeColor: Colors.black,
+                                    borderRadius: BorderRadius.circular(8),
+                                    badgeContent: Icon(
+                                      Icons.sports_soccer,
+                                      color: Colors.amberAccent,
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(left: 10.0),
+                                      child: Image.network(urlLogos + logo, errorBuilder: ((context, error, stackTrace) {
+                                        return const SizedBox.shrink();
+                                      })),
+                                    ),
+                                  )
+                                : Padding(
+                                    padding: const EdgeInsets.only(left: 10.0),
+                                    child: Image.network(urlLogos + logo, errorBuilder: ((context, error, stackTrace) {
+                                      return const SizedBox.shrink();
+                                    })),
+                                  ),
                         Column(
                           mainAxisAlignment: MainAxisAlignment.end,
                           crossAxisAlignment: CrossAxisAlignment.end,

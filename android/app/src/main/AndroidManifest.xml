@@ -1,7 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.tabela_brasileirao_serie_a">
+    package="com.brasizza.marcus.campeonatos">
+
+        <uses-permission android:name="android.permission.INTERNET"/>
+
    <application
-        android:label="tabela_brasileirao_serie_a"
+        android:label="Campeonatos pelo mundo"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

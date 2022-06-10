@@ -1,4 +1,4 @@
-package com.example.tabela_brasileirao_serie_a
+package com.brasizza.marcus.campeonatos
 
 import io.flutter.embedding.android.FlutterActivity
 
