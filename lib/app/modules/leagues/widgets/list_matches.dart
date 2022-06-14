@@ -36,7 +36,7 @@ class ListMatches extends StatelessWidget {
                             'X',
                           ),
                           Text(
-                            _game.placarTime1.toString(),
+                            _game.placarTime2.toString(),
                           )
                         ],
                       ),

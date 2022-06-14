@@ -1,17 +1,16 @@
 import 'dart:developer';
 
 import 'package:tabela_brasileirao_serie_a/app/data/models/competition_model.dart';
+import 'package:tabela_brasileirao_serie_a/app/data/services/competition_service.dart';
 
 import '../../data/models/country_model.dart';
-import '../../data/services/competition_service_impl.dart';
 
 class HomeController {
-  late CompetitionServiceImpl _service;
+  late CompetitionService _service;
 
-  HomeController() {
+  HomeController({required CompetitionService service}) {
+    _service = service;
     log('Start the HomeController instance');
-
-    _service = CompetitionServiceImpl.instance;
   }
 
   Future<Map<Country, List<Competition>>?> getCompetitions() async {

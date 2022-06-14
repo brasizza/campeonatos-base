@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:tabela_brasileirao_serie_a/app/data/models/championship_model.dart';
 import 'package:tabela_brasileirao_serie_a/app/data/services/championship_service.dart';
+import '../repositories/championship_repository.dart';
 import '../repositories/championship_repository_impl.dart';
 
 class ChampionshipServiceImpl implements ChampionshipService {
@@ -13,13 +14,13 @@ class ChampionshipServiceImpl implements ChampionshipService {
   }
 
   static ChampionshipServiceImpl? _instance;
-  static ChampionshipRepositoryImpl? _repository;
+  static ChampionshipRepository? _repository;
 
   ChampionshipServiceImpl._() {
     log('Start the ChampionshipServiceImpl instance');
     _repository ??= ChampionshipRepositoryImpl.instance;
   }
-  static ChampionshipServiceImpl get instance {
+  factory ChampionshipServiceImpl.instance({required ChampionshipRepositoryImpl repository}) {
     _instance ??= ChampionshipServiceImpl._();
     return _instance!;
   }
