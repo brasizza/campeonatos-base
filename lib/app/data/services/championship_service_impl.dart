@@ -18,7 +18,6 @@ class ChampionshipServiceImpl implements ChampionshipService {
 
   ChampionshipServiceImpl._() {
     log('Start the ChampionshipServiceImpl instance');
-    _repository ??= ChampionshipRepositoryImpl.instance;
   }
   factory ChampionshipServiceImpl.instance({required ChampionshipRepositoryImpl repository}) {
     _instance ??= ChampionshipServiceImpl._();

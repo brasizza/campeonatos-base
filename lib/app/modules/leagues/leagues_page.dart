@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tabela_brasileirao_serie_a/app/core/rest/http/http_rest_client.dart';
 import 'package:tabela_brasileirao_serie_a/app/core/widgets/error.dart';
 import 'package:tabela_brasileirao_serie_a/app/core/widgets/loading.dart';
 import 'package:tabela_brasileirao_serie_a/app/core/widgets/no_data.dart';
@@ -6,7 +7,7 @@ import 'package:tabela_brasileirao_serie_a/app/data/models/championship_model.da
 import 'package:tabela_brasileirao_serie_a/app/data/models/competition_model.dart';
 import 'package:tabela_brasileirao_serie_a/app/data/repositories/championship_repository_impl.dart';
 import 'package:tabela_brasileirao_serie_a/app/data/services/championship_service_impl.dart';
-import 'package:tabela_brasileirao_serie_a/app/modules/leagues/leagues_controller.dart';
+import 'package:tabela_brasileirao_serie_a/app/modules/leagues/controller/leagues_controller.dart';
 import 'package:tabela_brasileirao_serie_a/app/modules/leagues/widgets/list_matches.dart';
 import 'package:tabela_brasileirao_serie_a/app/modules/leagues/widgets/list_teams.dart';
 
@@ -37,7 +38,13 @@ class _LeaguesPageState extends State<LeaguesPage> {
   @override
   void didChangeDependencies() {
     competition = ModalRoute.of(context)?.settings.arguments as Competition;
-    final LeaguesController controller = LeaguesController(service: ChampionshipServiceImpl.instance(repository: ChampionshipRepositoryImpl.instance));
+    final LeaguesController controller = LeaguesController(
+      service: ChampionshipServiceImpl.instance(
+        repository: ChampionshipRepositoryImpl.instance(
+          restClient: HttpRestClient.instance,
+        ),
+      ),
+    );
     futureScore = controller.getScore(competition?.link);
     super.didChangeDependencies();
   }

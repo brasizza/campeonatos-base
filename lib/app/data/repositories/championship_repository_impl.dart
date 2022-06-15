@@ -3,11 +3,14 @@ import 'dart:developer';
 
 import 'package:tabela_brasileirao_serie_a/app/data/models/championship_model.dart';
 
+import '../../core/rest/rest_client.dart';
 import './championship_repository.dart';
 
 import 'package:http/http.dart' as http;
 
 class ChampionshipRepositoryImpl implements ChampionshipRepository {
+  late RestClient _restClient;
+
   @override
   Future<Championship?> getScore(String url) async {
     try {
@@ -34,11 +37,12 @@ class ChampionshipRepositoryImpl implements ChampionshipRepository {
   }
 
   static ChampionshipRepositoryImpl? _instance;
-  ChampionshipRepositoryImpl._() {
+  ChampionshipRepositoryImpl._({required RestClient restClient}) {
+    _restClient = restClient;
     log('Start the ChampionshipRepositoryImpl instance');
   }
-  static ChampionshipRepositoryImpl get instance {
-    _instance ??= ChampionshipRepositoryImpl._();
+  factory ChampionshipRepositoryImpl.instance({required RestClient restClient}) {
+    _instance ??= ChampionshipRepositoryImpl._(restClient: restClient);
     return _instance!;
   }
 }

@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:tabela_brasileirao_serie_a/app/core/rest/rest_client.dart';
 import 'package:tabela_brasileirao_serie_a/app/data/models/competition_model.dart';
 import 'package:tabela_brasileirao_serie_a/app/data/models/country_model.dart';
 
@@ -8,14 +9,16 @@ import './competition_repository.dart';
 import 'package:http/http.dart' as http;
 
 class CompetitionRepositoryImpl implements CompetitionRepository {
+  late RestClient _restClient;
+
   @override
   Future<Map<Country, List<Competition>>?> getCompetitions(String url) async {
     try {
-      final response = await http.get(Uri.parse(url));
+      final response = await _restClient.get((url));
       if (response.statusCode != 200) {
         return Future.error('Falha ao recuperar os dados');
       }
-      final responseJson = json.decode(response.body);
+      final responseJson = (response.data);
       if (responseJson['error'].length > 0) {
         return Future.error('Falha ao recuperar os dados');
       }
@@ -40,11 +43,12 @@ class CompetitionRepositoryImpl implements CompetitionRepository {
   }
 
   static CompetitionRepositoryImpl? _instance;
-  CompetitionRepositoryImpl._() {
+  CompetitionRepositoryImpl._({required RestClient restClient}) {
+    _restClient = restClient;
     log('Start the CompetitionRepositoryImpl instance');
   }
-  static CompetitionRepositoryImpl get instance {
-    _instance ??= CompetitionRepositoryImpl._();
+  factory CompetitionRepositoryImpl.instance({required RestClient restClient}) {
+    _instance ??= CompetitionRepositoryImpl._(restClient: restClient);
     return _instance!;
   }
 }
