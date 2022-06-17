@@ -1,4 +1,4 @@
-import 'exports/championship.dart';
+import '../exports/championship.dart';
 
 class ChampionshipRepositoryImpl implements ChampionshipRepository {
   late RestClient _restClient;

@@ -1,6 +1,6 @@
 export '../../data/models/competition_model.dart';
-export '../../data/repositories/championship_repository_impl.dart';
-export '../../data/repositories/competition_repository_impl.dart';
+export '../../data/repositories/rest/championship_repository_impl.dart';
+export '../../data/repositories/rest/competition_repository_impl.dart';
 export '../../data/services/championship_service_impl.dart';
 export '../../data/services/competition_service_impl.dart';
 export '../../modules/competitions/competition_page.dart';

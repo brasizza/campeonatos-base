@@ -1,4 +1,4 @@
-import 'exports/competiton.dart';
+import '../exports/competiton.dart';
 
 class CompetitionRepositoryImpl implements CompetitionRepository {
   late RestClient _restClient;
