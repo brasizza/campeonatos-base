@@ -3,9 +3,7 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 
-import '../rest_client.dart';
-import '../rest_client_exception.dart';
-import '../rest_client_response.dart';
+import 'dio.dart';
 
 class DioRestClient implements RestClient {
   final Dio _dio = Dio();

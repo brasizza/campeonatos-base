@@ -1,4 +1,4 @@
-import '../models/championship_model.dart';
+import 'exports/championship.dart';
 
 abstract class ChampionshipRepository {
   Future<Championship?> getScore(String url);

@@ -1,18 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../data/models/competition_model.dart';
-import '../../data/repositories/championship_repository_impl.dart';
-import '../../data/repositories/competition_repository_impl.dart';
-import '../../data/services/championship_service_impl.dart';
-import '../../data/services/competition_service_impl.dart';
-import '../../modules/competitions/competition_page.dart';
-import '../../modules/home/controller/home_controller.dart';
-import '../../modules/home/home_page.dart';
-import '../../modules/leagues/controller/leagues_controller.dart';
-import '../../modules/leagues/leagues_page.dart';
-import '../../modules/splash/splash_page.dart';
 import '../rest/dio/dio_rest_client.dart';
-import '../widgets/error.dart';
+import 'routes.dart';
 
 class AppRoute extends Route {
   static Route<dynamic> routes(RouteSettings settings) {

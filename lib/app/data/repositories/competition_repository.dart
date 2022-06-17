@@ -1,5 +1,4 @@
-import '../models/competition_model.dart';
-import '../models/country_model.dart';
+import 'exports/competiton.dart';
 
 abstract class CompetitionRepository {
   Future<Map<Country, List<Competition>>?> getCompetitions(String url);

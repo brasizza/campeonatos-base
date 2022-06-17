@@ -1,8 +1,4 @@
-import '../../core/log/developer_log.dart';
-import '../models/competition_model.dart';
-import '../models/country_model.dart';
-import '../repositories/competition_repository.dart';
-import 'competition_service.dart';
+import 'export/competiton.dart';
 
 class CompetitionServiceImpl implements CompetitionService {
   String baseUrl = "https://www.scorebat.com/api/competition/";

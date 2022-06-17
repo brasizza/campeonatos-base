@@ -1,8 +1,4 @@
-import '../../core/log/developer_log.dart';
-import '../../core/rest/rest_client.dart';
-import '../models/competition_model.dart';
-import '../models/country_model.dart';
-import 'competition_repository.dart';
+import 'exports/competiton.dart';
 
 class CompetitionRepositoryImpl implements CompetitionRepository {
   late RestClient _restClient;

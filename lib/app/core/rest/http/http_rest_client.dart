@@ -5,9 +5,7 @@ import 'dart:io';
 import 'package:http/http.dart';
 import 'package:http/http.dart' as http;
 
-import '../rest_client.dart';
-import '../rest_client_exception.dart';
-import '../rest_client_response.dart';
+import 'http.dart';
 
 class HttpRestClient implements RestClient {
   static HttpRestClient? _instance;
