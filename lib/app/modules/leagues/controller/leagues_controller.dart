@@ -1,17 +1,28 @@
-import 'dart:developer';
-
-import 'package:tabela_brasileirao_serie_a/app/data/models/championship_model.dart';
-import 'package:tabela_brasileirao_serie_a/app/data/services/championship_service.dart';
+import '../../../core/log/developer_log.dart';
+import '../../../data/models/championship_model.dart';
+import '../../../data/models/competition_model.dart';
+import '../../../data/services/championship_service.dart';
 
 class LeaguesController {
   late ChampionshipService _service;
 
-  LeaguesController({required ChampionshipService service}) {
+  static LeaguesController? _instance;
+
+  Competition? _competition;
+  set competition(Competition competition) => _competition = competition;
+
+  LeaguesController._({required ChampionshipService service}) {
     _service = service;
-    log('Start the LeaguesController instance');
+    Developer.logInstance(this);
   }
 
-  Future<Championship?> getScore(String? link) async {
-    return await _service.getScore(link);
+  factory LeaguesController.instance({required ChampionshipService service}) {
+    _instance ??= LeaguesController._(service: service);
+    return _instance!;
+  }
+
+  Future<Championship?> getScore() async {
+    return await _service.getScore(_competition?.link ?? '');
+    // return championship;
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:tabela_brasileirao_serie_a/app/core/utils.dart';
-import 'package:tabela_brasileirao_serie_a/app/data/models/game.dart';
-import 'package:tabela_brasileirao_serie_a/app/modules/leagues/widgets/team_widget.dart';
+import '../../../core/utils.dart';
+import '../../../data/models/game.dart';
+import 'team_widget.dart';
 
 class ListMatches extends StatelessWidget {
   final List<Game>? matches;
@@ -9,14 +9,14 @@ class ListMatches extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if ((this.matches?.length ?? 0) == 0) {
-      return Text('Sem jogos');
+    if ((matches?.length ?? 0) == 0) {
+      return const Text('Sem jogos');
     }
 
     return ListView.builder(
         itemCount: matches?.length ?? 0,
         itemBuilder: ((context, index) {
-          Game _game = matches![index];
+          Game game = matches![index];
 
           return Card(
             child: Padding(
@@ -24,29 +24,29 @@ class ListMatches extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  SizedBox(child: TeamWidget(game: _game, team: 1)),
+                  SizedBox(child: TeamWidget(game: game, team: 1)),
                   Column(
                     children: [
                       Row(
                         children: [
                           Text(
-                            _game.placarTime1.toString(),
+                            game.placarTime1.toString(),
                           ),
-                          Text(
+                          const Text(
                             'X',
                           ),
                           Text(
-                            _game.placarTime2.toString(),
+                            game.placarTime2.toString(),
                           )
                         ],
                       ),
                       Text(
-                        Utils.formatDate(_game.dateGame.toIso8601String(), splitHour: true),
+                        Utils.formatDate(game.dateGame.toIso8601String(), splitHour: true),
                         textAlign: TextAlign.center,
                       )
                     ],
                   ),
-                  SizedBox(child: TeamWidget(game: _game, team: 2)),
+                  SizedBox(child: TeamWidget(game: game, team: 2)),
                 ],
               ),
             ),

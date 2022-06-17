@@ -3,8 +3,8 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 
-import 'package:tabela_brasileirao_serie_a/app/data/models/game.dart';
-import 'package:tabela_brasileirao_serie_a/app/data/models/team_model.dart';
+import 'game.dart';
+import 'team_model.dart';
 
 class Championship {
   final List<Team> teams;
@@ -76,12 +76,12 @@ class Championship {
   int get hashCode => teams.hashCode ^ matches.hashCode ^ futureMaches.hashCode;
 
   factory Championship.fromResponse(responseJson) {
-    final _championship = Championship(
+    final championship = Championship(
       teams: responseJson['standings']['rows'].map<Team>((team) => Team.fromMap(team)).toList(),
       matches: responseJson['results'].map<Game>((team) => Game.fromMap(team)).toList(),
       futureMaches: responseJson['fixtures'].map<Game>((team) => Game.fromMap(team)).toList(),
     );
 
-    return _championship;
+    return championship;
   }
 }

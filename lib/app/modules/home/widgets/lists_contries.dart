@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:tabela_brasileirao_serie_a/app/data/models/country_model.dart';
-import 'package:tabela_brasileirao_serie_a/app/data/models/competition_model.dart';
+
+import '../../../data/models/competition_model.dart';
+import '../../../data/models/country_model.dart';
 
 class ListCountries extends StatelessWidget {
   final Map<Country, List<Competition>>? competitions;
@@ -8,28 +9,28 @@ class ListCountries extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _paises = competitions!.keys.toList();
+    final paises = competitions!.keys.toList();
     return GridView.builder(
-      itemCount: _paises.length,
+      itemCount: paises.length,
       itemBuilder: ((context, index) {
-        final _pais = _paises[index];
+        final pais = paises[index];
         return InkWell(
-          onTap: () => Navigator.pushNamed(context, '/competitions', arguments: {'competitions': competitions?[_pais], 'country': _pais}),
+          onTap: () => Navigator.pushNamed(context, '/competitions', arguments: {'competitions': competitions?[pais], 'country': pais}),
           child: Card(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  _pais.name,
+                  pais.name,
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                (_pais.flag == null)
+                (pais.flag == null)
                     ? const SizedBox.shrink()
                     : Image.network(
-                        _pais.flag!,
+                        pais.flag!,
                         errorBuilder: (context, error, stackTrace) => const Text('Sem bandeira.'),
                       )
               ],
@@ -47,7 +48,7 @@ class ListCountries extends StatelessWidget {
 }
 
 // import 'package:flutter/material.dart';
-// import 'package:tabela_brasileirao_serie_a/app/data/models/competition_model.dart';
+// import '../../data/models/competition_model.dart';
 
 // class ListCountries extends StatelessWidget {
 //   final List<WorldCompetition> competitions;

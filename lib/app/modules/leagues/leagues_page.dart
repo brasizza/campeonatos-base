@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:tabela_brasileirao_serie_a/app/core/rest/http/http_rest_client.dart';
-import 'package:tabela_brasileirao_serie_a/app/core/widgets/error.dart';
-import 'package:tabela_brasileirao_serie_a/app/core/widgets/loading.dart';
-import 'package:tabela_brasileirao_serie_a/app/core/widgets/no_data.dart';
-import 'package:tabela_brasileirao_serie_a/app/data/models/championship_model.dart';
-import 'package:tabela_brasileirao_serie_a/app/data/models/competition_model.dart';
-import 'package:tabela_brasileirao_serie_a/app/data/repositories/championship_repository_impl.dart';
-import 'package:tabela_brasileirao_serie_a/app/data/services/championship_service_impl.dart';
-import 'package:tabela_brasileirao_serie_a/app/modules/leagues/controller/leagues_controller.dart';
-import 'package:tabela_brasileirao_serie_a/app/modules/leagues/widgets/list_matches.dart';
-import 'package:tabela_brasileirao_serie_a/app/modules/leagues/widgets/list_teams.dart';
+import '../../core/widgets/error.dart';
+import '../../core/widgets/loading.dart';
+import '../../core/widgets/no_data.dart';
+import '../../data/models/championship_model.dart';
+import '../../data/models/competition_model.dart';
+import 'controller/leagues_controller.dart';
+import 'widgets/list_matches.dart';
+import 'widgets/list_teams.dart';
 
 class LeaguesPage extends StatefulWidget {
-  // final dynamic args;
-  const LeaguesPage({Key? key}) : super(key: key);
+  final LeaguesController controller;
+  const LeaguesPage({Key? key, required this.controller}) : super(key: key);
 
   @override
   State<LeaguesPage> createState() => _LeaguesPageState();
@@ -33,19 +30,12 @@ class _LeaguesPageState extends State<LeaguesPage> {
   @override
   void initState() {
     super.initState();
+
+    futureScore = widget.controller.getScore();
   }
 
   @override
   void didChangeDependencies() {
-    competition = ModalRoute.of(context)?.settings.arguments as Competition;
-    final LeaguesController controller = LeaguesController(
-      service: ChampionshipServiceImpl.instance(
-        repository: ChampionshipRepositoryImpl.instance(
-          restClient: HttpRestClient.instance,
-        ),
-      ),
-    );
-    futureScore = controller.getScore(competition?.link);
     super.didChangeDependencies();
   }
 
@@ -86,7 +76,7 @@ class _LeaguesPageState extends State<LeaguesPage> {
                                   initialPage = 0;
                                 });
                               },
-                              child: Text('Tabela')),
+                              child: const Text('Tabela')),
                           ElevatedButton(
                               style: ElevatedButton.styleFrom(primary: (initialPage == 1) ? Colors.amber.shade700 : null),
                               onPressed: () {
@@ -96,7 +86,7 @@ class _LeaguesPageState extends State<LeaguesPage> {
                                   initialPage = 1;
                                 });
                               },
-                              child: Text('Próximos')),
+                              child: const Text('Próximos')),
                           ElevatedButton(
                               style: ElevatedButton.styleFrom(primary: (initialPage == 2) ? Colors.amber.shade700 : null),
                               onPressed: () {
@@ -105,13 +95,13 @@ class _LeaguesPageState extends State<LeaguesPage> {
                                   initialPage = 2;
                                 });
                               },
-                              child: Text('Passados')),
+                              child: const Text('Passados')),
                         ],
                       ),
                     ),
                     Expanded(
                       child: PageView(
-                        physics: NeverScrollableScrollPhysics(),
+                        physics: const NeverScrollableScrollPhysics(),
                         controller: _pageController,
                         children: [
                           ListTeams(snapshot.data!.teams),

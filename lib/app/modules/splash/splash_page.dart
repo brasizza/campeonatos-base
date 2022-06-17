@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tabela_brasileirao_serie_a/app/modules/splash/controller/splash_controller.dart';
+import 'controller/splash_controller.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -34,7 +34,7 @@ class _SplashPageState extends State<SplashPage> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
+            children: const [
               Text(
                 "PARTIDAS DE FUTEBOL PELO MUNDO",
                 style: TextStyle(color: Colors.white, fontSize: 20),

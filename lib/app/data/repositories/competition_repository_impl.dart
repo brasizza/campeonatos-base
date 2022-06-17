@@ -1,12 +1,8 @@
-import 'dart:convert';
-import 'dart:developer';
-
-import 'package:tabela_brasileirao_serie_a/app/core/rest/rest_client.dart';
-import 'package:tabela_brasileirao_serie_a/app/data/models/competition_model.dart';
-import 'package:tabela_brasileirao_serie_a/app/data/models/country_model.dart';
-
+import '../../core/log/developer_log.dart';
+import '../../core/rest/rest_client.dart';
+import '../models/competition_model.dart';
+import '../models/country_model.dart';
 import './competition_repository.dart';
-import 'package:http/http.dart' as http;
 
 class CompetitionRepositoryImpl implements CompetitionRepository {
   late RestClient _restClient;
@@ -45,7 +41,7 @@ class CompetitionRepositoryImpl implements CompetitionRepository {
   static CompetitionRepositoryImpl? _instance;
   CompetitionRepositoryImpl._({required RestClient restClient}) {
     _restClient = restClient;
-    log('Start the CompetitionRepositoryImpl instance');
+    Developer.logInstance(this);
   }
   factory CompetitionRepositoryImpl.instance({required RestClient restClient}) {
     _instance ??= CompetitionRepositoryImpl._(restClient: restClient);

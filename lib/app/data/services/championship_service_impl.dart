@@ -1,9 +1,7 @@
-import 'dart:developer';
-
-import 'package:tabela_brasileirao_serie_a/app/data/models/championship_model.dart';
-import 'package:tabela_brasileirao_serie_a/app/data/services/championship_service.dart';
+import '../../core/log/developer_log.dart';
+import '../models/championship_model.dart';
 import '../repositories/championship_repository.dart';
-import '../repositories/championship_repository_impl.dart';
+import 'championship_service.dart';
 
 class ChampionshipServiceImpl implements ChampionshipService {
   String baseUrl = 'https://www.scorebat.com/api/competition/2/';
@@ -16,11 +14,12 @@ class ChampionshipServiceImpl implements ChampionshipService {
   static ChampionshipServiceImpl? _instance;
   static ChampionshipRepository? _repository;
 
-  ChampionshipServiceImpl._() {
-    log('Start the ChampionshipServiceImpl instance');
+  ChampionshipServiceImpl._({required ChampionshipRepository repository}) {
+    _repository = repository;
+    Developer.logInstance(this);
   }
-  factory ChampionshipServiceImpl.instance({required ChampionshipRepositoryImpl repository}) {
-    _instance ??= ChampionshipServiceImpl._();
+  factory ChampionshipServiceImpl.instance({required ChampionshipRepository repository}) {
+    _instance ??= ChampionshipServiceImpl._(repository: repository);
     return _instance!;
   }
 }

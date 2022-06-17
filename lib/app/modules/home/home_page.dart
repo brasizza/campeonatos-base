@@ -1,31 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:tabela_brasileirao_serie_a/app/core/rest/dio/dio_rest_client.dart';
-import 'package:tabela_brasileirao_serie_a/app/core/rest/http/http_rest_client.dart';
-import 'package:tabela_brasileirao_serie_a/app/core/widgets/error.dart';
-import 'package:tabela_brasileirao_serie_a/app/core/widgets/no_data.dart';
-import 'package:tabela_brasileirao_serie_a/app/data/models/competition_model.dart';
-import 'package:tabela_brasileirao_serie_a/app/data/repositories/competition_repository_impl.dart';
-import 'package:tabela_brasileirao_serie_a/app/modules/home/controller/home_controller.dart';
-import 'package:tabela_brasileirao_serie_a/app/modules/home/widgets/lists_contries.dart';
-
+import '../../core/widgets/error.dart';
 import '../../core/widgets/loading.dart';
+import '../../core/widgets/no_data.dart';
+import '../../data/models/competition_model.dart';
 import '../../data/models/country_model.dart';
-import '../../data/services/competition_service_impl.dart';
+import 'controller/home_controller.dart';
+import 'widgets/lists_contries.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  final HomeController controller;
+
+  const HomePage({Key? key, required this.controller, Object? arguments}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  final controller = HomeController(
-      service: CompetitionServiceImpl.instance(
-    repository: CompetitionRepositoryImpl.instance(
-        // restClient: HttpRestClient.instance,
-        restClient: DioRestClient.instance),
-  ));
   @override
   void initState() {
     super.initState();
@@ -39,7 +30,7 @@ class _HomePageState extends State<HomePage> {
         title: const Text('Competições pelo mundo!'),
       ),
       body: FutureBuilder<Map<Country, List<Competition>>?>(
-          future: controller.getCompetitions(),
+          future: widget.controller.getCompetitions(),
           builder: (context, snapshot) {
             switch (snapshot.connectionState) {
               case ConnectionState.none:

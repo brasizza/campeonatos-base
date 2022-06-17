@@ -1,8 +1,7 @@
-import 'dart:developer';
-
-import 'package:tabela_brasileirao_serie_a/app/data/models/competition_model.dart';
-import 'package:tabela_brasileirao_serie_a/app/data/repositories/competition_repository.dart';
+import '../../core/log/developer_log.dart';
+import '../models/competition_model.dart';
 import '../models/country_model.dart';
+import '../repositories/competition_repository.dart';
 import './competition_service.dart';
 
 class CompetitionServiceImpl implements CompetitionService {
@@ -17,7 +16,7 @@ class CompetitionServiceImpl implements CompetitionService {
   static CompetitionRepository? _repository;
 
   CompetitionServiceImpl._({required CompetitionRepository repository}) {
-    log('Start the CompetitionServiceImpl instance');
+    Developer.logInstance(this);
   }
 
   factory CompetitionServiceImpl.instance({required CompetitionRepository repository}) {

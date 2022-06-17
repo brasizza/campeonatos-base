@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'rest_client_response.dart';
 
 abstract class RestClient {
@@ -6,6 +7,7 @@ abstract class RestClient {
     dynamic data,
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? headers,
+    Encoding? encoding,
   });
 
   Future<RestClientResponse<T>> get<T>(
@@ -13,12 +15,12 @@ abstract class RestClient {
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? headers,
   });
-
   Future<RestClientResponse<T>> put<T>(
     String path, {
     dynamic data,
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? headers,
+    Encoding? encoding,
   });
 
   Future<RestClientResponse<T>> delete<T>(
@@ -26,6 +28,7 @@ abstract class RestClient {
     dynamic data,
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? headers,
+    Encoding? encoding,
   });
 
   Future<RestClientResponse<T>> patch<T>(
@@ -33,6 +36,7 @@ abstract class RestClient {
     dynamic data,
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? headers,
+    Encoding? encoding,
   });
 
   Future<RestClientResponse<T>> request<T>(
@@ -41,5 +45,6 @@ abstract class RestClient {
     dynamic data,
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? headers,
+    Encoding? encoding,
   });
 }

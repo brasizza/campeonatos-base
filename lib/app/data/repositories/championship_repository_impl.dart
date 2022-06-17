@@ -1,12 +1,7 @@
-import 'dart:convert';
-import 'dart:developer';
-
-import 'package:tabela_brasileirao_serie_a/app/data/models/championship_model.dart';
-
+import '../../core/log/developer_log.dart';
 import '../../core/rest/rest_client.dart';
+import '../models/championship_model.dart';
 import './championship_repository.dart';
-
-import 'package:http/http.dart' as http;
 
 class ChampionshipRepositoryImpl implements ChampionshipRepository {
   late RestClient _restClient;
@@ -14,9 +9,11 @@ class ChampionshipRepositoryImpl implements ChampionshipRepository {
   @override
   Future<Championship?> getScore(String url) async {
     try {
-      final response = await http.get(Uri.parse(url));
-      if (response.statusCode != 200) {}
-      final responseJson = json.decode(response.body);
+      final response = await _restClient.get((url));
+      if (response.statusCode != 200) {
+        return Future.error('Falha ao recuperar os dados');
+      }
+      final responseJson = (response.data);
       if (responseJson['error'].length > 0) {
         return Future.error('Falha ao recuperar os dados');
       }
@@ -39,7 +36,7 @@ class ChampionshipRepositoryImpl implements ChampionshipRepository {
   static ChampionshipRepositoryImpl? _instance;
   ChampionshipRepositoryImpl._({required RestClient restClient}) {
     _restClient = restClient;
-    log('Start the ChampionshipRepositoryImpl instance');
+    Developer.logInstance(this);
   }
   factory ChampionshipRepositoryImpl.instance({required RestClient restClient}) {
     _instance ??= ChampionshipRepositoryImpl._(restClient: restClient);

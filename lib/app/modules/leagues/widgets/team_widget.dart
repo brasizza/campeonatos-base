@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tabela_brasileirao_serie_a/app/data/models/game.dart';
+
+import '../../../data/models/game.dart';
 
 class TeamWidget extends StatelessWidget {
   final Game game;

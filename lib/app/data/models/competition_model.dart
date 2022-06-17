@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-import 'package:tabela_brasileirao_serie_a/app/data/models/country_model.dart';
+import 'country_model.dart';
 
 class Competition {
   final int id;

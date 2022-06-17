@@ -1,10 +1,11 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
-import 'package:tabela_brasileirao_serie_a/app/core/rest/rest_client.dart';
-import 'package:tabela_brasileirao_serie_a/app/core/rest/rest_client_response.dart';
 
+import '../rest_client.dart';
 import '../rest_client_exception.dart';
+import '../rest_client_response.dart';
 
 class DioRestClient implements RestClient {
   final Dio _dio = Dio();
@@ -21,8 +22,18 @@ class DioRestClient implements RestClient {
   }
 
   @override
-  Future<RestClientResponse<T>> delete<T>(String path, {data, Map<String, dynamic>? queryParameters, Map<String, dynamic>? headers}) {
-    throw UnimplementedError();
+  Future<RestClientResponse<T>> delete<T>(String path, {data, Map<String, dynamic>? queryParameters, Map<String, dynamic>? headers, Encoding? encoding}) async {
+    try {
+      final response = await _dio.delete(
+        path,
+        queryParameters: queryParameters,
+        options: Options(headers: headers),
+      );
+
+      return _dioResponseConverter(response);
+    } on DioError catch (e) {
+      _throwRestClientException(e);
+    }
   }
 
   @override
@@ -41,23 +52,62 @@ class DioRestClient implements RestClient {
   }
 
   @override
-  Future<RestClientResponse<T>> patch<T>(String path, {data, Map<String, dynamic>? queryParameters, Map<String, dynamic>? headers}) {
-    throw UnimplementedError();
+  Future<RestClientResponse<T>> patch<T>(String path, {data, Map<String, dynamic>? queryParameters, Map<String, dynamic>? headers, Encoding? encoding}) async {
+    try {
+      final response = await _dio.patch(
+        path,
+        queryParameters: queryParameters,
+        options: Options(headers: headers),
+      );
+
+      return _dioResponseConverter(response);
+    } on DioError catch (e) {
+      _throwRestClientException(e);
+    }
   }
 
   @override
-  Future<RestClientResponse<T>> post<T>(String path, {data, Map<String, dynamic>? queryParameters, Map<String, dynamic>? headers}) {
-    throw UnimplementedError();
+  Future<RestClientResponse<T>> post<T>(String path, {data, Map<String, dynamic>? queryParameters, Map<String, dynamic>? headers, Encoding? encoding}) async {
+    try {
+      final response = await _dio.post(
+        path,
+        queryParameters: queryParameters,
+        options: Options(headers: headers),
+      );
+
+      return _dioResponseConverter(response);
+    } on DioError catch (e) {
+      _throwRestClientException(e);
+    }
   }
 
   @override
-  Future<RestClientResponse<T>> put<T>(String path, {data, Map<String, dynamic>? queryParameters, Map<String, dynamic>? headers}) {
-    throw UnimplementedError();
+  Future<RestClientResponse<T>> put<T>(String path, {data, Map<String, dynamic>? queryParameters, Map<String, dynamic>? headers, Encoding? encoding}) async {
+    try {
+      final response = await _dio.put(
+        path,
+        queryParameters: queryParameters,
+        options: Options(headers: headers),
+      );
+
+      return _dioResponseConverter(response);
+    } on DioError catch (e) {
+      _throwRestClientException(e);
+    }
   }
 
   @override
-  Future<RestClientResponse<T>> request<T>(String path, {required String method, data, Map<String, dynamic>? queryParameters, Map<String, dynamic>? headers}) {
-    throw UnimplementedError();
+  Future<RestClientResponse<T>> request<T>(String path, {required String method, data, Map<String, dynamic>? queryParameters, Map<String, dynamic>? headers, Encoding? encoding}) async {
+    try {
+      final response = await _dio.request(
+        path,
+        queryParameters: queryParameters,
+        options: Options(headers: headers),
+      );
+      return _dioResponseConverter(response);
+    } on DioError catch (e) {
+      _throwRestClientException(e);
+    }
   }
 
   Future<RestClientResponse<T>> _dioResponseConverter<T>(Response<dynamic> response) async {

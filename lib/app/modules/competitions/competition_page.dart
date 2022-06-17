@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:tabela_brasileirao_serie_a/app/data/models/competition_model.dart';
-import 'package:tabela_brasileirao_serie_a/app/data/models/country_model.dart';
-import 'package:tabela_brasileirao_serie_a/app/modules/competitions/widgets/list_competition.dart';
+import '../../data/models/competition_model.dart';
+import '../../data/models/country_model.dart';
+import 'widgets/list_competition.dart';
 
 class CompetitionPage extends StatelessWidget {
-  const CompetitionPage({Key? key}) : super(key: key);
+  final List<Competition>? _competitions;
+  final Country? _country;
+  const CompetitionPage({Key? key, required List<Competition> competitions, required Country country})
+      : _competitions = competitions,
+        _country = country,
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final competition = ModalRoute.of(context)?.settings.arguments as Map;
-    List<Competition>? competitions = competition['competitions'];
-    Country country = competition['country'];
-
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
@@ -19,12 +20,12 @@ class CompetitionPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              (country.flag == null) ? const SizedBox.shrink() : Image.network(country.flag!),
+              (_country?.flag == null) ? const SizedBox.shrink() : Image.network(_country!.flag!),
               Flexible(
                 child: Padding(
                   padding: const EdgeInsets.only(left: 8.0),
                   child: Text(
-                    country.name,
+                    _country?.name ?? '',
                     overflow: TextOverflow.fade,
                   ),
                 ),
@@ -34,7 +35,7 @@ class CompetitionPage extends StatelessWidget {
         ),
         body: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: ListCompetition(competitions!),
+          child: ListCompetition(_competitions!),
         ));
   }
 }
