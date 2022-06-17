@@ -1,17 +1,17 @@
+import 'package:campeonatos/app/core/rest/dio/dio_rest_client.dart';
 import 'package:campeonatos/app/core/widgets/error.dart';
+import 'package:campeonatos/app/data/models/competition_model.dart';
+import 'package:campeonatos/app/data/repositories/championship_repository_impl.dart';
+import 'package:campeonatos/app/data/repositories/competition_repository_impl.dart';
+import 'package:campeonatos/app/data/services/championship_service_impl.dart';
+import 'package:campeonatos/app/data/services/competition_service_impl.dart';
+import 'package:campeonatos/app/modules/competitions/competition_page.dart';
+import 'package:campeonatos/app/modules/home/controller/home_controller.dart';
+import 'package:campeonatos/app/modules/home/home_page.dart';
+import 'package:campeonatos/app/modules/leagues/controller/leagues_controller.dart';
+import 'package:campeonatos/app/modules/leagues/leagues_page.dart';
+import 'package:campeonatos/app/modules/splash/splash_page.dart';
 import 'package:flutter/material.dart';
-import '../../data/models/competition_model.dart';
-import '../../data/repositories/championship_repository_impl.dart';
-import '../../data/repositories/competition_repository_impl.dart';
-import '../../data/services/championship_service_impl.dart';
-import '../../data/services/competition_service_impl.dart';
-import '../../modules/competitions/competition_page.dart';
-import '../../modules/home/controller/home_controller.dart';
-import '../../modules/home/home_page.dart';
-import '../../modules/leagues/controller/leagues_controller.dart';
-import '../../modules/leagues/leagues_page.dart';
-import '../../modules/splash/splash_page.dart';
-import '../rest/dio/dio_rest_client.dart';
 
 class AppRoute extends Route {
   static Route<dynamic> routes(RouteSettings settings) {

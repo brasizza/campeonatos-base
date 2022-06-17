@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import '../../core/widgets/error.dart';
-import '../../core/widgets/loading.dart';
-import '../../core/widgets/no_data.dart';
-import '../../data/models/championship_model.dart';
-import '../../data/models/competition_model.dart';
-import 'controller/leagues_controller.dart';
-import 'widgets/list_matches.dart';
-import 'widgets/list_teams.dart';
+import 'package:campeonatos/app/core/widgets/error.dart';
+import 'package:campeonatos/app/core/widgets/loading.dart';
+import 'package:campeonatos/app/core/widgets/no_data.dart';
+import 'package:campeonatos/app/data/models/championship_model.dart';
+import 'package:campeonatos/app/data/models/competition_model.dart';
+import 'package:campeonatos/app/modules/leagues/controller/leagues_controller.dart';
+import 'package:campeonatos/app/modules/leagues/widgets/list_matches.dart';
+import 'package:campeonatos/app/modules/leagues/widgets/list_teams.dart';
 
 class LeaguesPage extends StatefulWidget {
   final LeaguesController controller;

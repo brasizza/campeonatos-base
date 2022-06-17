@@ -1,4 +1,4 @@
-import 'rest_client_response.dart';
+import 'package:campeonatos/app/core/rest/rest_client_response.dart';
 
 class RestClientException implements Exception {
   String? message;

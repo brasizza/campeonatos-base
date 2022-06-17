@@ -4,9 +4,9 @@ import 'dart:io';
 
 import 'package:http/http.dart';
 import 'package:http/http.dart' as http;
-import '../rest_client.dart';
-import '../rest_client_exception.dart';
-import '../rest_client_response.dart';
+import 'package:campeonatos/app/core/rest/rest_client.dart';
+import 'package:campeonatos/app/core/rest/rest_client_exception.dart';
+import 'package:campeonatos/app/core/rest/rest_client_response.dart';
 
 class HttpRestClient implements RestClient {
   static HttpRestClient? _instance;

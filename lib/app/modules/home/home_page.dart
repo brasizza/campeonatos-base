@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import '../../core/widgets/error.dart';
-import '../../core/widgets/loading.dart';
-import '../../core/widgets/no_data.dart';
-import '../../data/models/competition_model.dart';
-import '../../data/models/country_model.dart';
-import 'controller/home_controller.dart';
-import 'widgets/lists_contries.dart';
+import 'package:campeonatos/app/core/widgets/error.dart';
+import 'package:campeonatos/app/core/widgets/loading.dart';
+import 'package:campeonatos/app/core/widgets/no_data.dart';
+import 'package:campeonatos/app/data/models/competition_model.dart';
+import 'package:campeonatos/app/data/models/country_model.dart';
+import 'package:campeonatos/app/modules/home/controller/home_controller.dart';
+import 'package:campeonatos/app/modules/home/widgets/lists_contries.dart';
 
 class HomePage extends StatefulWidget {
   final HomeController controller;

@@ -1,7 +1,7 @@
+import 'package:campeonatos/app/data/models/competition_model.dart';
+import 'package:campeonatos/app/data/models/country_model.dart';
+import 'package:campeonatos/app/modules/competitions/widgets/list_competition.dart';
 import 'package:flutter/material.dart';
-import '../../data/models/competition_model.dart';
-import '../../data/models/country_model.dart';
-import 'widgets/list_competition.dart';
 
 class CompetitionPage extends StatelessWidget {
   final List<Competition>? _competitions;

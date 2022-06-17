@@ -3,8 +3,8 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 
-import 'game.dart';
-import 'team_model.dart';
+import 'package:campeonatos/app/data/models/game.dart';
+import 'package:campeonatos/app/data/models/team_model.dart';
 
 class Championship {
   final List<Team> teams;

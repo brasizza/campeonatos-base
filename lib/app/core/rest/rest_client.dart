@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'rest_client_response.dart';
+import 'package:campeonatos/app/core/rest/rest_client_response.dart';
 
 abstract class RestClient {
   Future<RestClientResponse<T>> post<T>(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../data/models/competition_model.dart';
-import '../../../data/models/country_model.dart';
+import 'package:campeonatos/app/data/models/competition_model.dart';
+import 'package:campeonatos/app/data/models/country_model.dart';
 
 class ListCountries extends StatelessWidget {
   final Map<Country, List<Competition>>? competitions;

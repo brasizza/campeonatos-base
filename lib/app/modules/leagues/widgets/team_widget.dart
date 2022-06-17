@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../data/models/game.dart';
+import 'package:campeonatos/app/data/models/game.dart';
 
 class TeamWidget extends StatelessWidget {
   final Game game;

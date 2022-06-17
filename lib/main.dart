@@ -1,5 +1,5 @@
+import 'package:campeonatos/app/core/routes/app_route.dart';
 import 'package:flutter/material.dart';
-import 'app/core/routes/app_route.dart';
 
 void main() {
   runApp(const MaterialApp(

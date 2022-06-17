@@ -1,6 +1,6 @@
 import 'package:badges/badges.dart';
+import 'package:campeonatos/app/data/models/team_model.dart';
 import 'package:flutter/material.dart';
-import '../../../data/models/team_model.dart';
 
 class ListTeams extends StatelessWidget {
   final String urlLogos = 'https://s3.amazonaws.com/bookmkrs/img/logos/mini/';

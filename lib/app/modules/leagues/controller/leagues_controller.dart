@@ -1,7 +1,7 @@
-import '../../../core/log/developer_log.dart';
-import '../../../data/models/championship_model.dart';
-import '../../../data/models/competition_model.dart';
-import '../../../data/services/championship_service.dart';
+import 'package:campeonatos/app/core/log/developer_log.dart';
+import 'package:campeonatos/app/data/models/championship_model.dart';
+import 'package:campeonatos/app/data/models/competition_model.dart';
+import 'package:campeonatos/app/data/services/championship_service.dart';
 
 class LeaguesController {
   late ChampionshipService _service;
