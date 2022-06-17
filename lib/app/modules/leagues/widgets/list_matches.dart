@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import '../../../core/utils.dart';
+import '../../../core/widgets/no_data.dart';
 import '../../../data/models/game.dart';
 import 'team_widget.dart';
 
@@ -10,7 +12,9 @@ class ListMatches extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if ((matches?.length ?? 0) == 0) {
-      return const Text('Sem jogos');
+      return const NoDataWidgetCustom(
+        text: 'Sem jogos',
+      );
     }
 
     return ListView.builder(
@@ -20,12 +24,13 @@ class ListMatches extends StatelessWidget {
 
           return Card(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 10),
+              padding: const EdgeInsets.symmetric(vertical: 10),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  SizedBox(child: TeamWidget(game: game, team: 1)),
+                  Expanded(child: SizedBox(child: TeamWidget(game: game, team: 1))),
                   Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Row(
                         children: [
@@ -46,7 +51,7 @@ class ListMatches extends StatelessWidget {
                       )
                     ],
                   ),
-                  SizedBox(child: TeamWidget(game: game, team: 2)),
+                  Expanded(child: SizedBox(child: TeamWidget(game: game, team: 2))),
                 ],
               ),
             ),

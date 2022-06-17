@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'app/core/routes/app_route.dart';
+import 'app_widget.dart';
 
 void main() {
-  runApp(const MaterialApp(
-    debugShowCheckedModeBanner: false,
-    initialRoute: '/',
-    onGenerateRoute: AppRoute.routes,
-  ));
+  runApp(const AppWidget());
 }

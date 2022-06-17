@@ -17,13 +17,11 @@ class TeamWidget extends StatelessWidget {
       Text(
         (team == 1) ? game.time1 : game.time2,
         style: const TextStyle(fontWeight: FontWeight.bold),
+        softWrap: true,
       ),
-      Padding(
-        padding: const EdgeInsets.only(left: 10.0),
-        child: Image.network(urlLogos + logo, errorBuilder: ((context, error, stackTrace) {
-          return const SizedBox.shrink();
-        })),
-      )
+      Image.network(urlLogos + logo, errorBuilder: ((context, error, stackTrace) {
+        return const SizedBox.shrink();
+      }))
     ]);
   }
 }
