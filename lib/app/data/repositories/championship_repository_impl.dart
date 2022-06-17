@@ -1,7 +1,7 @@
-import 'package:campeonatos/app/core/log/developer_log.dart';
-import 'package:campeonatos/app/core/rest/rest_client.dart';
-import 'package:campeonatos/app/data/models/championship_model.dart';
-import 'package:campeonatos/app/data/repositories/championship_repository.dart';
+import '../../core/log/developer_log.dart';
+import '../../core/rest/rest_client.dart';
+import '../models/championship_model.dart';
+import 'championship_repository.dart';
 
 class ChampionshipRepositoryImpl implements ChampionshipRepository {
   late RestClient _restClient;

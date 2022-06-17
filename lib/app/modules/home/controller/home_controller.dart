@@ -1,7 +1,7 @@
-import 'package:campeonatos/app/core/log/developer_log.dart';
-import 'package:campeonatos/app/data/models/competition_model.dart';
-import 'package:campeonatos/app/data/models/country_model.dart';
-import 'package:campeonatos/app/data/services/competition_service.dart';
+import '../../../core/log/developer_log.dart';
+import '../../../data/models/competition_model.dart';
+import '../../../data/models/country_model.dart';
+import '../../../data/services/competition_service.dart';
 
 class HomeController {
   late CompetitionService _service;

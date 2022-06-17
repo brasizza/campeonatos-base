@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:campeonatos/app/core/utils.dart';
-import 'package:campeonatos/app/data/models/game.dart';
-import 'package:campeonatos/app/modules/leagues/widgets/team_widget.dart';
+import '../../../core/utils.dart';
+import '../../../data/models/game.dart';
+import 'team_widget.dart';
 
 class ListMatches extends StatelessWidget {
   final List<Game>? matches;

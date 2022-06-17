@@ -1,7 +1,7 @@
-import 'package:campeonatos/app/core/log/developer_log.dart';
-import 'package:campeonatos/app/data/models/championship_model.dart';
-import 'package:campeonatos/app/data/repositories/championship_repository.dart';
-import 'package:campeonatos/app/data/services/championship_service.dart';
+import '../../core/log/developer_log.dart';
+import '../models/championship_model.dart';
+import '../repositories/championship_repository.dart';
+import 'championship_service.dart';
 
 class ChampionshipServiceImpl implements ChampionshipService {
   String baseUrl = 'https://www.scorebat.com/api/competition/2/';

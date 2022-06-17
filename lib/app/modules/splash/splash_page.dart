@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:campeonatos/app/modules/splash/controller/splash_controller.dart';
+import 'controller/splash_controller.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);

@@ -1,5 +1,5 @@
 import 'package:badges/badges.dart';
-import 'package:campeonatos/app/data/models/team_model.dart';
+import '../../../data/models/team_model.dart';
 import 'package:flutter/material.dart';
 
 class ListTeams extends StatelessWidget {

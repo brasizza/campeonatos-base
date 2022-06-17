@@ -3,9 +3,9 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 
-import 'package:campeonatos/app/core/rest/rest_client.dart';
-import 'package:campeonatos/app/core/rest/rest_client_exception.dart';
-import 'package:campeonatos/app/core/rest/rest_client_response.dart';
+import '../rest_client.dart';
+import '../rest_client_exception.dart';
+import '../rest_client_response.dart';
 
 class DioRestClient implements RestClient {
   final Dio _dio = Dio();

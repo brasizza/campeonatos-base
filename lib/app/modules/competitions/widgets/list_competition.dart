@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:campeonatos/app/data/models/competition_model.dart';
+import '../../../data/models/competition_model.dart';
 
 class ListCompetition extends StatelessWidget {
   final List<Competition> competitions;
